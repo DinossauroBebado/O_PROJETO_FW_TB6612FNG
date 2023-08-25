@@ -22,6 +22,15 @@ Motor::Motor(int IN1pin, int IN2pin, int PWMpin, int channel, int resolution)
 }
 
 void Motor::drive(int speed) {
+
+  if(speed > 1000)
+      speed = 1000;
+
+  if(speed < -1000)
+      speed = -1000; 
+
+  speed = map(speed,-1000,1000,-1023,1023);
+
   if(speed > 0) {
     digitalWrite(IN1, HIGH);
     digitalWrite(IN2, LOW);
@@ -34,6 +43,7 @@ void Motor::drive(int speed) {
     digitalWrite(IN1, LOW);
     digitalWrite(IN2, LOW);
   }
+
 
   ledcWrite(_channel, abs(speed));
 }

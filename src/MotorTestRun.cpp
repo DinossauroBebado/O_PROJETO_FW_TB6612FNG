@@ -21,19 +21,19 @@ void setup() {
 void loop() {
 
   //PWM for the right motor
-  for(int i=0; i<pow(2, resolution_channel2); i++) {
+  for(int i=0; i< 1000; i++) {
     rightMotor.drive(i);
     Serial.println(i);
     delay(10);
   }
 
-  for(int j = 1023; j > - 1023; j--) {
+  for(int j = 1000; j > - 1000; j--) {
     rightMotor.drive(j);
     Serial.println(j);
     delay(10);
   }
 
-  for(int k = -1023; k < 0; k++) {
+  for(int k = -1000; k < 0; k++) {
     rightMotor.drive(k);
     Serial.println(k);
     delay(10);
